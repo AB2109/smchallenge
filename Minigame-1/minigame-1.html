@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-    <title>Phaser - Making your first game, part 4</title>
+    <title>Minigame - 1 Jaguar/Landrover</title>
     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
     <style type="text/css">
         body {
@@ -37,6 +37,7 @@ var cursors;
 var moving = 0;
 
 var lane = 0;
+
 
 
 
@@ -90,6 +91,7 @@ function update() {
             game.camera.x += 300;
         }
     }
+
     //TODO Configure
     // Lanes
     if(game.camera.x < 300)
@@ -104,7 +106,6 @@ function update() {
         lane = 3;
     }
 
-
 }
 
 
@@ -112,8 +113,8 @@ function update() {
 function render() {
 
     game.debug.cameraInfo(game.camera, 32, 32);
-
-
+    //game.debug.var = lane(game.camera,60,32);
+    game.debug.text("Lane: " + lane, 32, 132);
 
 }
 
