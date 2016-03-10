@@ -20,12 +20,8 @@ var game = new Phaser.Game(1320, 742.5, Phaser.AUTO, '', {preload: preload, crea
 
 function preload() {
 
-    game.load.image('sky', 'assets/sky.png');
     game.load.image ('bg', 'assets/proto-bg.png');
-    game.load.image('ground', 'assets/platform.png');
-    game.load.image('star', 'assets/star.png');
-    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-
+    game.load.image('obs', 'assets/obs-test.png');
 
 
 
@@ -65,6 +61,19 @@ function create() {
     game.camera.setPosition(300,275);
 
 
+    sprite = game.add.sprite(1200, 600, 'obs');
+    sprite.anchor.set(0.5);
+    sprite.smoothed = false;
+
+    game.physics.enable(sprite, Phaser.Physics.ARCADE);
+    sprite.body.immovable = true;
+
+    sprite2 = game.add.sprite(600, 270, 'obs', 3);
+    game.physics.enable(sprite2, Phaser.Physics.ARCADE);
+
+    game.add.tween(sprite.scale).to( { x: 3, y: 3 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+
+
 
 
 
@@ -75,6 +84,9 @@ function create() {
 
 function update() {
 
+    sprite2.body.velocity.x = -200;
+
+    game.physics.arcade.collide(sprite, sprite2);
 
 
 
@@ -92,7 +104,7 @@ function update() {
         }
     }
 
-    //TODO Configure
+  /*  //TODO Configure
     // Lanes
     if(game.camera.x < 300)
     {
@@ -105,7 +117,7 @@ function update() {
     else if(game.camera.x >= 600) {
         lane = 3;
     }
-
+*/
 }
 
 
