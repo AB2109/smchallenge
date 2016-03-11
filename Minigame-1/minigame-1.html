@@ -21,7 +21,7 @@ var game = new Phaser.Game(1320, 742.5, Phaser.AUTO, '', {preload: preload, crea
 function preload() {
 
     game.load.image ('bg', 'assets/proto-bg.png');
-    game.load.image('obs', 'assets/obs-test.png');
+    game.load.image('obs', 'assets/obstacle-big.png');
 
 
 
@@ -68,11 +68,10 @@ function create() {
     game.physics.enable(sprite, Phaser.Physics.ARCADE);
     sprite.body.immovable = true;
 
-    sprite2 = game.add.sprite(600, 270, 'obs', 3);
-    game.physics.enable(sprite2, Phaser.Physics.ARCADE);
 
-    game.add.tween(sprite.scale).to( { x: 3, y: 3 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
+    game.add.tween(sprite.scale).to( { x: -3, y: -3 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+ //   game.sprite.scale.to({ x: -3, y: -3 }, 8000);
 
 
 
@@ -84,9 +83,9 @@ function create() {
 
 function update() {
 
-    sprite2.body.velocity.x = -200;
+ //   sprite2.body.velocity.x = -200;
 
-    game.physics.arcade.collide(sprite, sprite2);
+    game.physics.arcade.collide(sprite);
 
 
 
@@ -125,7 +124,6 @@ function update() {
 function render() {
 
     game.debug.cameraInfo(game.camera, 32, 32);
-    //game.debug.var = lane(game.camera,60,32);
     game.debug.text("Lane: " + lane, 32, 132);
 
 }
